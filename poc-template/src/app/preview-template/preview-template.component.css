@@ -1,0 +1,41 @@
+/*Preview1 CSS start*/
+.velocityTemplate {
+  height: 80ex;
+  width: 40%;
+  margin-left: 4%;
+  margin-top: 1%;
+  float: left;
+} 
+
+.htmlTemplate {
+	height: 80ex;
+  	width: 40%;
+  	margin-left: 4%;
+	margin-top: 1%;
+	float: left;
+}
+
+.previewContainer {
+	height: 50rem;
+	width: 100%;
+	margin: auto;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 25em;
+  margin-top: 20%;
+  margin: 5%;
+  float: left;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+/* Preview and Publish buttons */
+.example-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+/*Preview 1 CSS End */
