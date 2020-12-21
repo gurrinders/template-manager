@@ -1,3 +1,20 @@
 .mat-tab-group {
   margin-bottom: 48px;
 }
+
+.mat-toolbar.mat-primary {
+  background: #007bff;
+  color: #fff;
+}
+
+.logo{
+  height: 2em ;
+  width: 2em;
+  margin: 1em ;
+}
+
+.router-outlet-app{
+  height: 88vh;
+  border: solid;
+  background-color: #FFFFFF;
+}

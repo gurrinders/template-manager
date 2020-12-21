@@ -1,17 +1,86 @@
 <div class="appTitle">
-  <mat-toolbar>
-    <span class="mat-h2">Template Manager</span>
-  </mat-toolbar>
+    <mat-toolbar>
+        <button mat-icon-button>
+              <mat-icon (click)= "sidenav.toggle()">menu</mat-icon>
+        </button> 
+        <img class="logo" src="../assets/images/logo.jpg"> 
+    </mat-toolbar>
+<div>
+<div>
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav>
+            <div class="hidden">
+                <button mat-button [routerLink]= "'#'" routerLinkActive="active"></button>
+            </div>
+            <mat-nav-list>
+                    <button mat-button [routerLink]= "'/login'" routerLinkActive="#">
+                      <mat-icon>login</mat-icon>
+                      <span>Login</span>
+                    </button>
+            </mat-nav-list>
+            <!-- International banking Menu-->
+            <mat-nav-list>
+                    <button mat-button [matMenuTriggerFor]="menuIB">
+                        <mat-icon>business</mat-icon>
+                        <span> International  Banking </span>
+                    </button>
+                    <mat-menu #menuIB ="matMenu">
+                                <button mat-menu-item  [routerLink] = "'/searchTemplate'" routerLinkActive="active">
+                                    <mat-icon>search</mat-icon> 
+                                    <span>Search</span>
+                                </button>
+                                <button mat-menu-item  [routerLink] = "'/previewTemplate'" routerLinkActive="active">
+                                    <mat-icon>preview</mat-icon> 
+                                    <span>Preview</span>
+                                </button>
+                    </mat-menu>       
+            </mat-nav-list>
+           <!-- Canadian menu-->
+            <mat-nav-list>
+                    <button mat-button [matMenuTriggerFor]="menuCanada">
+                        <mat-icon>business</mat-icon>
+                        <span> InfoAlerts  Banking </span>
+                    </button>
+                    <mat-menu #menuCanada ="matMenu">
+                                <button mat-menu-item  [routerLink] = "'/searchTemplate'" routerLinkActive="active">
+                                    <mat-icon>search</mat-icon> 
+                                    <span>Search</span>
+                                </button>
+                                <button mat-menu-item  [routerLink] = "'/previewTemplate'" routerLinkActive="active">
+                                    <mat-icon>preview</mat-icon> 
+                                    <span>Preview</span>
+                                </button>
+                    </mat-menu>        
+            </mat-nav-list>
+
+            <!-- Direct Delivery menu-->
+            <mat-nav-list>
+                    <button mat-button [matMenuTriggerFor]="menuDirectDelivery">
+                        <mat-icon>business</mat-icon>
+                        <span> Direct Delivery </span>
+                    </button>
+                    <mat-menu #menuDirectDelivery ="matMenu">
+                                <button mat-menu-item  [routerLink] = "'/searchTemplate'" routerLinkActive="active">
+                                    <mat-icon>search</mat-icon> 
+                                    <span>Search</span>
+                                </button>
+                                <button mat-menu-item  [routerLink] = "'/previewTemplate'" routerLinkActive="active">
+                                    <mat-icon>preview</mat-icon> 
+                                    <span>Preview</span>
+                                </button>
+                    </mat-menu>        
+            </mat-nav-list>
+            <mat-nav-list>
+                <button mat-button (click)= "sidenav.toggle()">
+                    <mat-icon>close</mat-icon>
+                    <span>Close</span>
+                </button>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+             <div class="router-outlet-app">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>
-<mat-divider></mat-divider>
-<mat-tab-group animationDuration="0ms" mat-align-tabs="center">
-  <mat-tab label= "Login">
-      <app-login-template></app-login-template>
-  </mat-tab>
-  <mat-tab label= "Search" mat-align-tabs="center">
-      <app-search-template></app-search-template>
-  </mat-tab>
-  <mat-tab label= "Preview" mat-align-tabs="center">
-      <app-preview-template></app-preview-template>
-  </mat-tab>
-</mat-tab-group>
