@@ -4,11 +4,13 @@ import com.bns.enp.template.manager.exception.ResourceNotFoundException;
 import com.bns.enp.template.manager.model.TemplateModel;
 import com.bns.enp.template.manager.repository.TemplateManagerRepository;
 import com.bns.enp.template.manager.service.TemplateManagerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,10 +18,15 @@ import java.util.Map;
 @RequestMapping("/api/v1")
 public class TemplateManagerController {
 
+    @Autowired
     private TemplateManagerRepository templateRepository;
 
-    @GetMapping("/template/search")
-    public @ResponseBody TemplateModel getTemplateById(@RequestBody String templateId) throws ResourceNotFoundException  {
+    @Autowired
+    private TemplateManagerService templateService;
+
+
+    @GetMapping("/template/search/{id}")
+    public @ResponseBody TemplateModel getTemplateById(@PathVariable(value="id")  String templateId) throws ResourceNotFoundException  {
         return templateRepository.findById(templateId).orElseThrow( () -> new ResourceNotFoundException("Template not found: " + templateId));
     }
 
@@ -33,7 +40,9 @@ public class TemplateManagerController {
         TemplateModel templateModel = templateRepository.findById(templateId).orElseThrow(() -> new ResourceNotFoundException("Template not found: " + templateId));;
 
         templateModel.setTemplateId(templateId);
-        templateModel.setData(templateModelBody);
+        templateModel.setContent(templateModelBody);
+        templateModel.setGenericTemplate("genericTemplate");
+        templateModel.setTimeStamp(java.time.LocalDateTime.now().toString());
         final TemplateModel updatedTemplate =  templateRepository.save(templateModel);
         return ResponseEntity.ok(updatedTemplate);
     }

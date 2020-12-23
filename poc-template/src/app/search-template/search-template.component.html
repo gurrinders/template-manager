@@ -1,3 +1,17 @@
-<div class="searchContainer">
-	<p>search-template works!</p>
+<div class="Search-Id">
+    <h1>Enter Template Details</h1>
+    <div>
+        <div>
+            Enter the delivery type: <input type="text" class ="input" placeholder="Delivery type" autofocus="" [(ngModel)]="deliveryType">
+        </div>
+        <div>
+            Enter the alert id: <input type="text" class ="input" placeholder="Alert id" autofocus="" [(ngModel)]="alertId">
+        </div> 
+        <div>
+            Enter the language: <input type="text" class ="input" placeholder="Language" autofocus="" [(ngModel)]="language">
+        </div>
+        <div>
+            <button class="btn" (click)="searchTemplate()">Search</button>
+        </div>
+    </div>  
 </div>
